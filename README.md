@@ -37,18 +37,22 @@ Hence, this project attempts to automate this Extract. Load. Transform. pipeline
 
 ## Accessing Apache Airflow UI
 - Make sure to in an virtual environment within the EC2 linux terminal
-- type the command "airflow standalone" into the terminal to download the necessary files
-- Log into the Airflow User Interface by typing the EC2 instance IPV4 DNS:Port into the web browser and signing in with the credentials given during the first boot up of airflow
+- type the command "airflow standalone" into the terminal to download the dependencies
+- Log into the Airflow User Interface by typing the EC2 instance IPV4 DNS:Port into the web browser
+![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/2ff4be3f-27db-422c-9d26-bfdb1e54f9b1)
+- On first entry, sign in with the credentials given during the first activation of airflow standalone
 Note: Port depends on the security group defined within the EC2 instance and can be manually changed within the EC2 dashboard
 
 ## Setting Up S3 bucket
 - Make sure to allow EC2 to access S3's bucket when configuring the bucket
 
-- 
+## How the Pipeline Works
+- With everything set up, we can create our own Dag python file in the EC2 Linux. (e.g. weather_dags.py)
 ![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/250f3569-0918-4e0b-a370-b8e0363c09e8)
 
-
-## 
+- is_weather_api_ready checks to see if the Open Weather API is callable
+- extract_weather_data checks to see if is_weather_api_ready was successfully exceuted and if so, will call the API again to store the weather data into a JSON file
+- transform_load_weather_data checks to see if extract_weather_data was successfully executed and if so, will transform data from the JSON file into a panda dataframe and finally export it as an a csv file into the S3 bucket.
 
 
 
