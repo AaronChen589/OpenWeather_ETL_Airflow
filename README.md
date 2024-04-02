@@ -56,19 +56,27 @@ Note: Port depends on the security group defined within the EC2 instance and can
 
 
 ## How the Pipeline Works
-
 ![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/250f3569-0918-4e0b-a370-b8e0363c09e8)
 
 - is_weather_api_ready checks to see if the Open Weather API is callable
 - extract_weather_data checks to see if is_weather_api_ready was successfully exceuted and if so, will call the API again to store the weather data into a JSON file
 - transform_load_weather_data checks to see if extract_weather_data was successfully executed and if so, will transform data from the JSON file into a panda dataframe and finally export it as an a csv file into the S3 bucket.
 
-- Additionally, the Dag python file allow us to select how frequency and time of the execution of the DAG.
 ## Automate and Schedule the Process
 - Now that everything is set up and running properly, we can start the airflow scheduler within the EC2 instance by...
 -  typing "airflow scheduler" into the linux # The scheduler is required to be online at all times for the automation to work
 -  typing "nohup airflow scheduler > scheduler.log &" into the linux # The scheduler is now able to run in the background until the process is killed manually
+- 
+Note: The Dag python file allow us to select how frequency and time of the execution of the DAG. I have it preselected it to work daily at midnight UTC.
 
+## Now what?
+![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/0c0d4c60-83e9-4406-835b-c6e789efd8f2)
+
+With data being collected on the daily within our S3 bucket, we can draw insights on the data and create visualizations to tell stories. Additionally, we can see if given the weather conditions, are we able to predict future weather.
+
+### Author: Aaron Chen
+https://www.linkedin.com/in/aaronchenstony/
+https://public.tableau.com/app/profile/aaron.chen3368/vizzes 
 
 
 
