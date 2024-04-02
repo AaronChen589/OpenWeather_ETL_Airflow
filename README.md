@@ -12,31 +12,43 @@ Hence, this project attempts to automate this Extract. Load. Transform. pipeline
 
 
 
-## Installing
+## Requirements
 * Windows 11
 * Vscode IDE (Python + SSH extensions are also required)
 * Access to an AWS account
   - EC2 instance (small instance type is recommended for apache airflow)
   - S3 bucket
 
-## Setting Up EC2 Linux Instance
-1) Once you create an EC2 instance, make sure to properly update the linux with the following commands...
+
+## Connect To the EC2 via AWS Dashboard and Setting Up the Linux Terminal
+1) Log into AWS and navigate to the EC2 dashboard to create the instance
+![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/cc6e1b3f-b884-4ec5-8056-e777a902eeee)
+
+2) Once created, we can access the EC2 linux terminal as shown in the picture
+![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/de5d5f32-f9dd-416d-b870-4bf4e9d73d31)
+![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/bbd62e0f-5ede-409e-bbec-192603a7137c)
+
+ Make sure to download the dependencies within the EC2 linux with the following commands...
 - sudo apt update
 - sudo apt install python3-pip
 - sudo apt install python3.10-venv
 - sudo apt install pandas
 - sudo pip install s3fs
 - sudo pip install apache-airflow
-- airflow standalone
+
 
 ## Setting Up S3 bucket
-- Make sure to allow EC2 to access S3's bucket when configuring
+- Make sure to allow EC2 to access S3's bucket when configuring in the settings
 
+## Accessing Apache Airflow 
+- Make sure to in an virtual environment within the EC2 linux terminal
+- type the command "airflow standalone" into the terminal to download the necessary files
+- 
 - 
 
+![Uploading image.png…]()
 
-
-
+## 
 
 
 
