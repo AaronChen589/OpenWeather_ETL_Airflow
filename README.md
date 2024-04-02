@@ -12,4 +12,33 @@ Hence, this project attempts to automate this Extract. Load. Transform. pipeline
 
 
 
+## Installing
+* Windows 11
+* Vscode IDE (Python + SSH extensions are also required)
+* Access to an AWS account
+  - EC2 instance (small instance type is recommended for apache airflow)
+  - S3 bucket
+
+## Setting Up EC2 Linux Instance
+1) Once you create an EC2 instance, make sure to properly update the linux with the following commands...
+- sudo apt update
+- sudo apt install python3-pip
+- sudo apt install python3.10-venv
+- sudo apt install pandas
+- sudo pip install s3fs
+- sudo pip install apache-airflow
+- airflow standalone
+
+## Setting Up S3 bucket
+- Make sure to allow EC2 to access S3's bucket when configuring
+
+- 
+
+
+
+
+
+
+
+
 
