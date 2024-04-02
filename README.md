@@ -8,8 +8,7 @@ Curious about the weather condition in your city? How about the last time it sno
 
 These questions can be tackled through the continious collection of data over a long period of time, for which insights and predictions can be properly made.
 
-Hence, this project attempts to automate this Extract. Load. Transform. pipeline process using Apache Airflow, Python and AWS EC2 and S3 and the Open Weather API.
-
+Hence, this project attempts to automate this Extract. Load. Transform. pipeline process by first using Python to extract weather data from the Open Weather API and transforming it into usable csv data files to be placed in the s3 bucket. Apache Airflow will be used to orchestrated this process, making sure daily weather data are being collected.
 
 
 ## Requirements
@@ -17,8 +16,7 @@ Hence, this project attempts to automate this Extract. Load. Transform. pipeline
 * Vscode IDE (Python + SSH extensions are also required)
 * Access to an AWS account
   - EC2 instance (small instance type is recommended for apache airflow)
-  - S3 bucket
-
+  - S3 bucket (For storing the weather data)
 
 ## Connect To the EC2 via AWS Dashboard and Setting Up the Linux Terminal
 1) Log into AWS and navigate to the EC2 dashboard to create the instance
@@ -37,16 +35,18 @@ Hence, this project attempts to automate this Extract. Load. Transform. pipeline
 - sudo pip install apache-airflow
 
 
-## Setting Up S3 bucket
-- Make sure to allow EC2 to access S3's bucket when configuring in the settings
-
-## Accessing Apache Airflow 
+## Accessing Apache Airflow UI
 - Make sure to in an virtual environment within the EC2 linux terminal
 - type the command "airflow standalone" into the terminal to download the necessary files
-- 
-- 
+- Log into the Airflow User Interface by typing the EC2 instance IPV4 DNS:Port into the web browser and signing in with the credentials given during the first boot up of airflow
+Note: Port depends on the security group defined within the EC2 instance and can be manually changed within the EC2 dashboard
 
-![Uploading image.png…]()
+## Setting Up S3 bucket
+- Make sure to allow EC2 to access S3's bucket when configuring the bucket
+
+- 
+![image](https://github.com/AaronChen589/OpenWeather_ETL_Airflow/assets/80292924/250f3569-0918-4e0b-a370-b8e0363c09e8)
+
 
 ## 
 
