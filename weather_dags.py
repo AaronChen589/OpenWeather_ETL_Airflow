@@ -91,13 +91,13 @@ with DAG('weather_dags', default_args=default_arg, schedule_interval='@daily', c
         is_weather_api_ready = HttpSensor(
             task_id=f'is_weather_api_ready_{city.replace(" ", "_")}',
             http_conn_id='weathermap_api',
-            endpoint=f'/data/2.5/weather?q={city}&appid=ce562fb2a864761cd0633816264bafce'  
+            endpoint=f'/data/2.5/weather?q={city}&appid=API_KEY'  
         )
         # Extracts data of the city from the open weather api
         extract_weather_data = SimpleHttpOperator(
             task_id=task_id,
             http_conn_id='weathermap_api',
-            endpoint=f'/data/2.5/weather?q={city}&appid=ce562fb2a864761cd0633816264bafce',
+            endpoint=f'/data/2.5/weather?q={city}&appid=API_KEY',
             method='GET',
             response_filter=lambda r: json.loads(r.text),
             log_response=True
